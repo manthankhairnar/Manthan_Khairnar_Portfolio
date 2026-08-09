@@ -15,7 +15,6 @@ window.SUPABASE_CONFIG = {
   // Supabase Dashboard > Project Settings > API > "anon public" key
   // before deploying — if it's wrong, both the public site and the
   // admin login will fail to reach Supabase.
-  anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9jcWp5cmNrbWtpamtsd3ZxcWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYxNjU0MTcsImV4cCI6MjEwMTc0MTQxN30.yAGR4xBNupSX7weugGZNyZ7X7IBc_LO",
-
+  anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9jcWp5cmNrbWtpamtsd3ZxcWR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYxNjU0MTcsImV4cCI6MjEwMTc0MTQxN30.yAGR4xBNupSX7weugGZNyZ7X7IBc_LOCLDdXbYFmH8I",
   storageBucket: "portfolio-media"
 };
