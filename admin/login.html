@@ -57,7 +57,7 @@
   (async () => {
     const { data: { session } } = await window.sb.auth.getSession();
     if (session && (!window.ADMIN_UUID || window.ADMIN_UUID === "8a0ef80c-5da9-4ef4-9c7b-fbed49220468" || session.user.id === window.ADMIN_UUID)) {
-      window.location.href = "index.html";";
+      window.location.href = "index.html";
     }
   })();
 </script>
