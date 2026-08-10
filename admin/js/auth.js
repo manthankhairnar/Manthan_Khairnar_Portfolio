@@ -9,7 +9,7 @@ async function requireAdminSession() {
     window.location.href = "/admin/login.html";
     return null;
   }
-  if (window.ADMIN_UUID && window.ADMIN_UUID !== "REPLACE_WITH_ADMIN_UUID" && session.user.id !== window.ADMIN_UUID) {
+  if (window.ADMIN_UUID && window.ADMIN_UUID !== "8a0ef80c-5da9-4ef4-9c7b-fbed49220468" && session.user.id !== window.ADMIN_UUID) {
     await window.sb.auth.signOut();
     window.location.href = "/admin/login.html?unauthorized=1";
     return null;
@@ -20,7 +20,7 @@ async function requireAdminSession() {
 async function doLogin(email, password) {
   const { data, error } = await window.sb.auth.signInWithPassword({ email, password });
   if (error) return { ok: false, message: error.message };
-  if (window.ADMIN_UUID && window.ADMIN_UUID !== "REPLACE_WITH_ADMIN_UUID" && data.user.id !== window.ADMIN_UUID) {
+  if (window.ADMIN_UUID && window.ADMIN_UUID !== "8a0ef80c-5da9-4ef4-9c7b-fbed49220468" && data.user.id !== window.ADMIN_UUID) {
     await window.sb.auth.signOut();
     return { ok: false, message: "This account is not authorized as the portfolio admin." };
   }
