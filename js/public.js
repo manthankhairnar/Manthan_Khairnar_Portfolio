@@ -307,14 +307,24 @@
     if (!rows.length) { grid.appendChild(el(`<p class="empty-note">No certificates added yet.</p>`)); return; }
     rows.forEach(c => {
       const link = c.pdf_url || c.image_url;
+      const imgHtml = c.image_url
+        ? `<img src="${publicUrlFor(c.image_url)}" alt="${esc(c.title)}">`
+        : `No image yet`;
       grid.appendChild(el(`
         <div class="cert-card reveal in">
-          <div class="icn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4V2M16 4V2M3 10h18"/></svg></div>
-          <b>${esc(c.title)}</b><span>${esc(c.issuer || '')}${c.issue_date ? ' · ' + esc(c.issue_date) : ''}</span>
-          ${link ? `<a class="cert-view" href="${publicUrlFor(link)}" target="_blank" rel="noopener">View →</a>` : ''}
+          <div class="cert-img">${imgHtml}</div>
+          <b>${esc(c.title)}</b>
+          <span>Issued by: ${esc(c.issuer || '—')}${c.issue_date ? ' · ' + esc(c.issue_date) : ''}</span>
+          ${link ? `<a class="cert-view" href="${publicUrlFor(link)}" target="_blank" rel="noopener">View full certificate →</a>` : ''}
         </div>`));
     });
   }
+
+Commit both, hard-refresh, and each card should now show the certificate image filling most of the square, with the name and "Issued by" text underneath — matching your sketch.
+
+One thing worth doing while you're in there: go to the admin dashboard → Certificates → make sure each entry actually has an image uploaded via the Image field (not just the PDF field) — otherwise you'll see the "No image yet" placeholder instead of the certificate itself.
+
+Write a message…
 
   /* ---------------- ACHIEVEMENTS ---------------- */
   async function renderAchievements() {
