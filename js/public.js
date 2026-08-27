@@ -208,16 +208,16 @@
   }
 
      /* ---------------- EDUCATION ---------------- */
-  async function renderEducation() {
+    async function renderEducation() {
     const rows = await safeSelect('education', { order: 'sort_order' });
     const grid = document.getElementById('eduGrid');
     if (!rows.length) { document.getElementById('education').style.display = 'none'; return; }
     rows.forEach(e => {
       grid.appendChild(el(`
         <div class="ach-card reveal in">
-          <div class="t">${esc(e.degree)}</div>
+          <div class="t" style="font-size:15px;">${esc(e.degree)}</div>
           <div class="d">${esc(e.institution || '')}${e.location ? ' · ' + esc(e.location) : ''}</div>
-          <div class="d">${esc(e.start_date || '')}${e.end_date ? ' – ' + esc(e.end_date) : ''}</div>
+          ${(e.start_date || e.end_date) ? `<div class="d">${esc(e.start_date || '')}${e.end_date ? ' – ' + esc(e.end_date) : ''}</div>` : ''}
           ${e.description ? `<div class="d" style="margin-top:8px;">${esc(e.description)}</div>` : ''}
         </div>`));
     });
