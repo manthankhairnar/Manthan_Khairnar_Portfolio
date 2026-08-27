@@ -320,12 +320,6 @@
     });
   }
 
-Commit both, hard-refresh, and each card should now show the certificate image filling most of the square, with the name and "Issued by" text underneath — matching your sketch.
-
-One thing worth doing while you're in there: go to the admin dashboard → Certificates → make sure each entry actually has an image uploaded via the Image field (not just the PDF field) — otherwise you'll see the "No image yet" placeholder instead of the certificate itself.
-
-Write a message…
-
   /* ---------------- ACHIEVEMENTS ---------------- */
   async function renderAchievements() {
     const rows = await safeSelect('achievements', { order: 'sort_order' });
