@@ -175,23 +175,20 @@ html.dark .impact-strip{background:var(--bg-alt); border-top:1px solid var(--lin
 .skill-pill{font-size:12.5px; padding:7px 12px; border-radius:100px; background:var(--bg-alt); border:1px solid var(--line); font-weight:500;}
 
 /* CERTS / ACHIEVEMENTS */
-.cert-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
-@media(max-width:860px){.cert-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:520px){.cert-grid{grid-template-columns:1fr;}}
 .cert-card{
   background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-  padding:24px; text-align:center; aspect-ratio:1/1;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:14px; text-align:left; aspect-ratio:1/1;
+  display:flex; flex-direction:column; gap:10px;
 }
-.cert-card .icn{width:44px; height:44px; border-radius:12px; background:var(--blue-soft); color:var(--blue); display:flex; align-items:center; justify-content:center; margin:0 auto 14px;}
-.cert-card b{font-size:14px; display:block; margin-bottom:4px;}
+.cert-card .cert-img{
+  width:100%; flex:1; border-radius:10px; overflow:hidden;
+  background:var(--bg-alt); display:flex; align-items:center; justify-content:center;
+  color:var(--ink-soft); font-size:12px; font-family:'IBM Plex Mono',monospace;
+}
+.cert-card .cert-img img{width:100%; height:100%; object-fit:cover;}
+.cert-card b{font-size:14.5px; display:block;}
 .cert-card span{font-size:12px; color:var(--ink-soft);}
-.cert-card a.cert-view{display:inline-block; margin-top:10px; font-size:12px; font-weight:600; color:var(--blue);}
-.ach-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px;}
-.ach-card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px;}
-.ach-card .n{font-family:var(--font-heading); font-size:26px; color:var(--blue); font-weight:600;}
-.ach-card .t{font-size:13.5px; margin-top:8px; font-weight:600;}
-.ach-card .d{font-size:12.5px; color:var(--ink-soft); margin-top:4px; line-height:1.5;}
+.cert-card a.cert-view{font-size:12px; font-weight:600; color:var(--blue);}
 
 /* BLOG */
 .blog-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px;}
