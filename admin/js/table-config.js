@@ -49,12 +49,7 @@ window.TABLES = {
     { name: "fact4_title", label: "Fact 4 Title", type: "text" }, { name: "fact4_sub", label: "Fact 4 Subtitle", type: "text" },
     { name: "status", label: "Status", type: "status" }
   ]},
-  mun: { label: "MUN", icon: "globe", singleton: true, fields: [
-    { name: "title", label: "Title", type: "text" },
-    { name: "description", label: "Description", type: "textarea" },
-    { name: "pills", label: "Pills (comma-separated)", type: "text" },
-    { name: "status", label: "Status", type: "status" }
-  ]},
+   
    journey: { label: "Journey", icon: "map", singleton: false, listCols: ["role_group", "entry_date", "title", "status"], fields: [
     { name: "role_group", label: "Tab / Role", type: "text" },
     { name: "entry_date", label: "Date", type: "text" },
