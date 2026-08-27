@@ -127,11 +127,15 @@
   }
 
   /* ---------------- JOURNEY (LEDGER) ---------------- */
-  let JOURNEY_CACHE = [];
+    let JOURNEY_CACHE = [];
+  let ACTIVE_ROLE = null;
   async function renderLedger(filter) {
     const ledgerList = document.getElementById('ledgerList');
     ledgerList.innerHTML = '';
-    const items = JOURNEY_CACHE.filter(i => filter === 'all' || i.category === filter);
+    const items = JOURNEY_CACHE.filter(i =>
+      (ACTIVE_ROLE == null || (i.role_group || 'NSS VIIT — Secretary') === ACTIVE_ROLE) &&
+      (filter === 'all' || i.category === filter)
+    );
     if (!items.length) { ledgerList.appendChild(el(`<p class="empty-note">No entries yet in this category.</p>`)); return; }
     items.forEach(item => {
       const card = el(`
@@ -160,6 +164,21 @@
   }
   async function initJourney() {
     JOURNEY_CACHE = await safeSelect('journey', { order: 'sort_order' });
+    const roles = [...new Set(JOURNEY_CACHE.map(i => i.role_group || 'NSS VIIT — Secretary'))];
+    ACTIVE_ROLE = roles[0] || null;
+    const tabsWrap = document.getElementById('journeyRoleTabs');
+    tabsWrap.innerHTML = '';
+    roles.forEach((r, i) => {
+      const tab = el(`<div class="camp-tab ${i === 0 ? 'active' : ''}">${esc(r)}</div>`);
+      tab.addEventListener('click', () => {
+        ACTIVE_ROLE = r;
+        tabsWrap.querySelectorAll('.camp-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const activeChip = document.querySelector('#timelineFilters .filter-chip.active');
+        renderLedger(activeChip ? activeChip.dataset.filter : 'all');
+      });
+      tabsWrap.appendChild(tab);
+    });
     renderLedger('all');
     document.getElementById('timelineFilters').addEventListener('click', e => {
       const chip = e.target.closest('.filter-chip'); if (!chip) return;
@@ -168,7 +187,7 @@
       renderLedger(chip.dataset.filter);
     });
   }
-
+   
   /* ---------------- CAMP DAYS ---------------- */
   async function renderCamp() {
     const days = await safeSelect('camp_days', { order: 'sort_order' });
@@ -188,17 +207,7 @@
     });
   }
 
-  /* ---------------- MUN ---------------- */
-  async function renderMUN() {
-    const m = await safeSelect('mun', { single: true });
-    const section = document.getElementById('munSection');
-    if (!m) { section.style.display = 'none'; return; }
-    document.getElementById('munTitle').textContent = m.title || '';
-    document.getElementById('munDesc').textContent = m.description || '';
-    const pills = (m.pills || '').split(',').map(s => s.trim()).filter(Boolean);
-    const wrap = document.getElementById('munPills');
-    pills.forEach(p => wrap.appendChild(el(`<span class="mun-pill">${esc(p)}</span>`)));
-  }
+
 
   /* ---------------- PROJECTS ---------------- */
   async function renderProjects() {
