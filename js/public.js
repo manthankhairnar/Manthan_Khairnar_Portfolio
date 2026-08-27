@@ -438,7 +438,7 @@
     await applyAppearance();
     await Promise.all([
       renderSiteSettings(), renderHero(), renderAbout(), renderImpact(),
-      initJourney(), renderCamp(), renderMUN(), renderProjects(),
+      initJourney(), renderCamp(), renderProjects(),
       initGallery(), renderSkills(), renderCertificates(), renderAchievements(),
       renderBlog(), renderContact()
     ]);
