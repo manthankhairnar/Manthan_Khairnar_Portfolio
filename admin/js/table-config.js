@@ -55,7 +55,8 @@ window.TABLES = {
     { name: "pills", label: "Pills (comma-separated)", type: "text" },
     { name: "status", label: "Status", type: "status" }
   ]},
-  journey: { label: "Journey", icon: "map", singleton: false, listCols: ["entry_date", "title", "category", "status"], fields: [
+   journey: { label: "Journey", icon: "map", singleton: false, listCols: ["role_group", "entry_date", "title", "status"], fields: [
+    { name: "role_group", label: "Tab / Role", type: "text" },
     { name: "entry_date", label: "Date", type: "text" },
     { name: "category", label: "Category", type: "select", options: ["environment", "health", "civic", "camp"] },
     { name: "badge", label: "Badge", type: "text" },
