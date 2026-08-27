@@ -155,7 +155,7 @@ window.TABLES = {
 
 // Dashboard nav order (Media handled separately by media.js)
 window.NAV_ORDER = [
-  "hero", "about", "mun", "journey", "camp_days", "education", "experience",
+  "hero", "about", "journey", "camp_days", "education", "experience",
   "projects", "gallery", "skills", "certificates", "achievements", "impact_stats",
   "blog", "social_links", "contact"
 ];
